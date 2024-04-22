@@ -1,0 +1,153 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "MartaKoshkina1",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "Marta",
+      "last_name": "Koshkina",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-04-21T15:51:28.524Z",
+      "email": "Marta@koshkina.ru",
+      "phone": "9996668822",
+      "avatar": "/users/796d02684eadafba407faf81a4fd697d.png",
+      "city": "Кошкостан",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "MarinaOkroshkina2",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "Marina",
+      "last_name": "Okroshkina",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-04-21T15:52:50.094Z",
+      "email": "Marina@okroshkina.ru",
+      "phone": "9996668877",
+      "avatar": "/users/796d02684eadafba407faf81a4fd697d.png",
+      "city": "Окрошкостан",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "password": "TamaraKartoshkina3",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "Tamara",
+      "last_name": "Kartoshkina",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-04-21T15:53:40.363Z",
+      "email": "Tamara@kartoshkina.ru",
+      "phone": "9995558877",
+      "avatar": "/users/796d02684eadafba407faf81a4fd697d.png",
+      "city": "Картошкостан",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "password": "DarinaPirojkina4",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "Darina",
+      "last_name": "Pirojkina",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-04-21T16:52:19.483Z",
+      "email": "Darina@pirojkina.ru",
+      "phone": "9996208877",
+      "avatar": "/users/796d02684eadafba407faf81a4fd697d.png",
+      "city": "Пирожкостан",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "payment_data": "2022-06-18",
+      "payment_amount": 120000,
+      "payment_method": "Наличные",
+      "payment_course": [
+        1
+      ],
+      "payment_lesson": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "payment_data": "2023-06-18",
+      "payment_amount": 120000,
+      "payment_method": "Перевод",
+      "payment_course": [
+        2
+      ],
+      "payment_lesson": [
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "payment_data": "2021-06-18",
+      "payment_amount": 120000,
+      "payment_method": "Перевод",
+      "payment_course": [
+        3
+      ],
+      "payment_lesson": [
+        5,
+        6
+      ]
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 4,
+    "fields": {
+      "user": 4,
+      "payment_data": "2022-01-05",
+      "payment_amount": 240000,
+      "payment_method": "Наличные",
+      "payment_course": [
+        1,
+        2
+      ],
+      "payment_lesson": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  }
+]

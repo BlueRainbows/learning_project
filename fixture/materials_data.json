@@ -1,0 +1,95 @@
+[
+  {
+    "model": "materials.course",
+    "pk": 1,
+    "fields": {
+      "name_course": "Pyton",
+      "image_course": "",
+      "description_course": "Pyton developer"
+    }
+  },
+  {
+    "model": "materials.course",
+    "pk": 2,
+    "fields": {
+      "name_course": "Java",
+      "image_course": "",
+      "description_course": "Java developer"
+    }
+  },
+  {
+    "model": "materials.course",
+    "pk": 3,
+    "fields": {
+      "name_course": "C++",
+      "image_course": "",
+      "description_course": "C++ developer"
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 1,
+    "fields": {
+      "name_lesson": "Основы Pyton разработки",
+      "image_lesson": "",
+      "description_lesson": "Синтаксис языка Pyton",
+      "url_lesson": null,
+      "course": 1
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 2,
+    "fields": {
+      "name_lesson": "Введение в ООП",
+      "image_lesson": "",
+      "description_lesson": "Введение в концепции ООП",
+      "url_lesson": null,
+      "course": 1
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 3,
+    "fields": {
+      "name_lesson": "Основы Java разработки",
+      "image_lesson": "",
+      "description_lesson": "Синтаксис языка Java",
+      "url_lesson": null,
+      "course": 2
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 4,
+    "fields": {
+      "name_lesson": "Введение в ООП",
+      "image_lesson": "",
+      "description_lesson": "Введение в концепции ООП",
+      "url_lesson": null,
+      "course": 2
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 5,
+    "fields": {
+      "name_lesson": "Основы C++ разработки",
+      "image_lesson": "",
+      "description_lesson": "Синтаксис языка C++",
+      "url_lesson": null,
+      "course": 3
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 6,
+    "fields": {
+      "name_lesson": "Введение в ООП",
+      "image_lesson": "",
+      "description_lesson": "Введение в концепции ООП",
+      "url_lesson": null,
+      "course": 3
+    }
+  }
+]
