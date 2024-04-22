@@ -7,9 +7,3 @@ class LessonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lesson
         fields = '__all__'
-
-
-class LessonNameSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Lesson
-        fields = ('course',)
