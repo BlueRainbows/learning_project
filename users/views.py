@@ -1,20 +1,30 @@
-from rest_framework.filters import OrderingFilter
-from rest_framework.viewsets import ModelViewSet
-
-from django_filters import rest_framework as filters
-from users.models import User, Payment
-from users.serializers.payment import PaymentSerializer
+from rest_framework import permissions
+from rest_framework.generics import RetrieveUpdateDestroyAPIView, CreateAPIView, ListAPIView
+from users.models import User
 from users.serializers.user import UserSerializer
 
 
-class UserViewSet(ModelViewSet):
+class UserCreateView(CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (permissions.AllowAny,)
+
+    def perform_create(self, serializer):
+        user = serializer.save(is_active=True)
+        user.set_password(serializer.validated_data['password'])
+        user.save()
+
+
+class UserListView(ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
-class PaymentViewSet(ModelViewSet):
-    queryset = Payment.objects.all()
-    serializer_class = PaymentSerializer
-    filter_backends = (filters.DjangoFilterBackend, OrderingFilter)
-    filterset_fields = ('payment_course', 'payment_lesson', 'payment_method')
-    ordering_fields = ('payment_data',)
+class UserRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def perform_update(self, serializer):
+        user = serializer.save(is_active=True)
+        user.set_password(serializer.validated_data['password'])
+        user.save()

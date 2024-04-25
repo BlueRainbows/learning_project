@@ -3,9 +3,9 @@
     "model": "materials.course",
     "pk": 1,
     "fields": {
-      "name_course": "Pyton",
+      "name_course": "Python",
       "image_course": "",
-      "description_course": "Pyton developer"
+      "description_course": "Python developer"
     }
   },
   {
