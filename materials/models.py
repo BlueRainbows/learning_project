@@ -9,6 +9,7 @@ class Course(models.Model):
     name_course = models.CharField(max_length=200, verbose_name='Название курса')
     image_course = models.ImageField(upload_to='courses/', verbose_name='Превью курса', **NULLABLE)
     description_course = models.TextField(verbose_name='Описание курса', **NULLABLE)
+    url_course = models.URLField(verbose_name='Ссылка на курс', **NULLABLE)
 
     user = models.ForeignKey(User, on_delete=models.SET_NULL, verbose_name='Пользователь', **NULLABLE)
 

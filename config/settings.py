@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'users',
     'payment',
     'materials',
+    'subscription',
 ]
 
 MIDDLEWARE = [
@@ -154,5 +155,3 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # определение модели
 AUTH_USER_MODEL = 'users.User'
-
-
