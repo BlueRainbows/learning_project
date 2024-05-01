@@ -46,7 +46,6 @@ class LessonTestCase(APITestCase):
         url = reverse('materials:lesson_create')
         data = {'name_lesson': 'C#'}
         response = self.client.post(path=url, data=data, format='json')
-        print(response.json())
 
         # Тест на удачное создание урока
         self.assertEqual(
@@ -125,3 +124,10 @@ class LessonTestCase(APITestCase):
         self.assertEqual(
             content.get('results')[0].get('name_lesson'),
             Lesson.objects.get(pk=self.lesson.pk).name_lesson)
+
+        # Тест на вывод ошибки при попытке вызова поля несуществующего объекта
+        self.assertRaises(
+            TypeError,
+            Lesson.objects.get(pk=self.lesson.pk).name_lesson,
+            'C#'
+        )
