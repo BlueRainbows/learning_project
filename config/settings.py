@@ -177,5 +177,3 @@ MEDIA_ROOT = BASE_DIR / 'media'
 AUTH_USER_MODEL = 'users.User'
 
 SECRET_KEY_STRIPE = os.getenv('SECRET_KEY_STRIPE')
-
-

@@ -1,10 +1,9 @@
 from drf_spectacular.types import OpenApiTypes
-from drf_spectacular.utils import extend_schema, extend_schema_field, extend_schema_serializer, OpenApiParameter
+from drf_spectacular.utils import extend_schema_field
 from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
 
 from materials.models import Course, Lesson
-from materials.serializers.lesson import LessonSerializer
 from materials.validators import UrlValidator
 from subscription.models import Subscription
 

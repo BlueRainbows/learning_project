@@ -38,4 +38,3 @@ class PaymentCreateAPIView(CreateAPIView):
         payment.payment_session = session
         payment.payment_url = payment_url
         payment.save()
-
