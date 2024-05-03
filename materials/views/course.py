@@ -1,8 +1,11 @@
+from drf_spectacular.types import OpenApiTypes
+from drf_spectacular.utils import extend_schema, OpenApiParameter
 from rest_framework.viewsets import ModelViewSet
 
 from materials.models import Course
 from materials.pagination import PaginationCourse
 from materials.serializers.course import CourseSerializer
+from materials.services import create_product_course
 from users.permissions import PermissionModer, PermissionUser
 
 
@@ -21,5 +24,7 @@ class CourseViewSet(ModelViewSet):
         return super().get_permissions()
 
     def perform_create(self, serializer):
-        user = serializer.save(user=self.request.user)
-        user.save()
+        course = serializer.save(user=self.request.user)
+        product = create_product_course(course.name_course, course.description_course)
+        course.product_id = product
+        course.save()

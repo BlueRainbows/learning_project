@@ -40,9 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'rest_framework',
     'django_filters',
     'rest_framework_simplejwt',
+    'drf_spectacular',
 
     'users',
     'payment',
@@ -86,6 +88,16 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PERMISSION_CLASSES':
         ['rest_framework.permissions.IsAuthenticated'],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Your Project API',
+    'DESCRIPTION': 'Your project description',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'GENERIC_ADDITIONAL_PROPERTIES': 'dict'
+    # OTHER SETTINGS
 }
 
 # Database
@@ -155,3 +167,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # определение модели
 AUTH_USER_MODEL = 'users.User'
+
+SECRET_KEY_STRIPE = os.getenv('SECRET_KEY_STRIPE')

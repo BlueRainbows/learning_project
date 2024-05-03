@@ -10,6 +10,7 @@ class Course(models.Model):
     image_course = models.ImageField(upload_to='courses/', verbose_name='Превью курса', **NULLABLE)
     description_course = models.TextField(verbose_name='Описание курса', **NULLABLE)
     url_course = models.URLField(verbose_name='Ссылка на курс', **NULLABLE)
+    product_id = models.CharField(max_length=200, verbose_name='ID курса', **NULLABLE)
 
     user = models.ForeignKey(User, on_delete=models.SET_NULL, verbose_name='Пользователь', **NULLABLE)
 
@@ -26,6 +27,7 @@ class Lesson(models.Model):
     image_lesson = models.ImageField(upload_to='lessons/', verbose_name='Превью урока', **NULLABLE)
     description_lesson = models.TextField(verbose_name='Описание урока', **NULLABLE)
     url_lesson = models.URLField(verbose_name='Ссылка на урок', **NULLABLE)
+    product_id = models.CharField(max_length=200, verbose_name='ID урока', **NULLABLE)
 
     course = models.ForeignKey(Course, on_delete=models.SET_NULL, verbose_name='Курс', **NULLABLE)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, verbose_name='Пользователь', **NULLABLE)

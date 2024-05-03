@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from materials.models import Lesson
 from materials.pagination import PaginationLesson
 from materials.serializers.lesson import LessonSerializer
+from materials.services import create_product_lesson
 from users.permissions import PermissionModer, PermissionUser
 
 
@@ -26,8 +27,10 @@ class LessonCreateView(CreateAPIView):
     permission_classes = [IsAuthenticated, PermissionUser & ~PermissionModer]
 
     def perform_create(self, serializer):
-        user = serializer.save(user=self.request.user)
-        user.save()
+        lesson = serializer.save(user=self.request.user)
+        product = create_product_lesson(lesson.name_lesson, lesson.description_lesson)
+        lesson.product_id = product
+        lesson.save()
 
 
 class LessonUpdateView(UpdateAPIView):
