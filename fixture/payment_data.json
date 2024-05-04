@@ -7,13 +7,8 @@
       "payment_data": "2022-06-18",
       "payment_amount": 120000,
       "payment_method": "Наличные",
-      "payment_course": [
-        1
-      ],
-      "payment_lesson": [
-        1,
-        2
-      ]
+      "payment_course": 1,
+      "payment_lesson": 1
     }
   },
   {
@@ -24,13 +19,8 @@
       "payment_data": "2023-06-18",
       "payment_amount": 120000,
       "payment_method": "Перевод",
-      "payment_course": [
-        2
-      ],
-      "payment_lesson": [
-        3,
-        4
-      ]
+      "payment_course": 2,
+      "payment_lesson": 3
     }
   },
   {
@@ -41,13 +31,8 @@
       "payment_data": "2021-06-18",
       "payment_amount": 120000,
       "payment_method": "Перевод",
-      "payment_course": [
-        3
-      ],
-      "payment_lesson": [
-        5,
-        6
-      ]
+      "payment_course": 3,
+      "payment_lesson": 5
     }
   },
   {
@@ -58,16 +43,8 @@
       "payment_data": "2022-01-05",
       "payment_amount": 240000,
       "payment_method": "Наличные",
-      "payment_course": [
-        1,
-        2
-      ],
-      "payment_lesson": [
-        1,
-        2,
-        3,
-        4
-      ]
+      "payment_course": 2,
+      "payment_lesson": 4
     }
   }
 ]

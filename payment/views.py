@@ -23,16 +23,11 @@ class PaymentCreateAPIView(CreateAPIView):
     serializer_class = PaymentSerializer
 
     def perform_create(self, serializer):
-        pk_product = []
         payment = serializer.save(user=self.request.user)
-        if payment.payment_course.all():
-            for course in payment.payment_course.all():
-                pk_product.append(course.product_id)
-            product = pk_product[0]
+        if payment.payment_course:
+            product = payment.payment_course.product_id
         else:
-            for lesson in payment.payment_lesson.all():
-                pk_product.append(lesson.product_id)
-            product = pk_product[0]
+            product = payment.payment_lesson.product_id
         price = create_price(payment.payment_amount, product)
         session, payment_url = create_session(price)
         payment.payment_session = session
