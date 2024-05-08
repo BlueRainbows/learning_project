@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
+from datetime import timedelta
+
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -46,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'drf_spectacular',
     'corsheaders',
+    'django_celery_beat',
 
     'users',
     'payment',
@@ -169,11 +172,38 @@ STATICFILES_DIRS = (
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Определение корневой директории и урла для медиа файлов
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # определение модели
 AUTH_USER_MODEL = 'users.User'
 
+# Ключ от stripe
 SECRET_KEY_STRIPE = os.getenv('SECRET_KEY_STRIPE')
+
+# URL-адрес брокера результатов, также Redis
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+
+# Часовой пояс для работы Celery
+CELERY_TIMEZONE = TIME_ZONE
+# Флаг отслеживания выполнения задач
+CELERY_TASK_TRACK_STARTED = bool(os.getenv('CELERY_TASK_TRACK_STARTED'))
+# Максимальное время на выполнение задачи
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+# Настройки подключения к почтовым рассылкам
+
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT'))
+
+# EMAIL_PORT = 587
+
+EMAIL_USE_SSL = bool(os.getenv('EMAIL_USE_SSL'))
+# EMAIL_USE_TLS = bool(os.getenv('EMAIL_USE_TLS'))
+
+# Почта с которой приизводиться рассылка
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+# Сгенирированный пароль
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')

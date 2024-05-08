@@ -1,11 +1,11 @@
-from drf_spectacular.types import OpenApiTypes
-from drf_spectacular.utils import extend_schema, OpenApiParameter
 from rest_framework.viewsets import ModelViewSet
 
 from materials.models import Course
 from materials.pagination import PaginationCourse
 from materials.serializers.course import CourseSerializer
 from materials.services import create_product_course
+from materials.tasks import add_mailing_task
+from subscription.models import Subscription
 from users.permissions import PermissionModer, PermissionUser
 
 
@@ -27,4 +27,14 @@ class CourseViewSet(ModelViewSet):
         course = serializer.save(user=self.request.user)
         product = create_product_course(course.name_course, course.description_course)
         course.product_id = product
+        course.save()
+
+    def perform_update(self, serializer):
+        course = serializer.save()
+        users_list = []
+        subscriptions = Subscription.objects.filter(course=course)
+        if subscriptions.exists():
+            for user in subscriptions:
+                users_list.append(user.user.email)
+        mailing = add_mailing_task.delay(users_list)
         course.save()

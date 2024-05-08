@@ -22,8 +22,7 @@ class CourseSerializer(serializers.ModelSerializer):
             current_subscriptions = "Вы не подписаны на курс"
         return current_subscriptions
 
-    @extend_schema_field(OpenApiTypes.OBJECT)
-    def get_course_lessons(self, course):
+    def get_course_lessons(self, course) -> list[dict[str, str]]:
         course_lessons = Lesson.objects.filter(course=course).values()
         return course_lessons
 
