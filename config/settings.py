@@ -207,3 +207,10 @@ EMAIL_USE_SSL = bool(os.getenv('EMAIL_USE_SSL'))
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 # Сгенирированный пароль
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+
+CELERY_BEAT_SCHEDULE = {
+    'check_user_last_login': {
+        'task': 'users.tasks.check_user_last_login',
+        'schedule': timedelta(days=1)
+    },
+}

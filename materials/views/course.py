@@ -36,5 +36,5 @@ class CourseViewSet(ModelViewSet):
         if subscriptions.exists():
             for user in subscriptions:
                 users_list.append(user.user.email)
-        mailing = add_mailing_task.delay(users_list)
+        add_mailing_task.delay(users_list)
         course.save()
