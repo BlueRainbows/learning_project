@@ -2,10 +2,18 @@ from celery import shared_task
 from django.core.mail import send_mail
 
 from config import settings
+from materials.models import Course
+from subscription.models import Subscription
 
 
 @shared_task
-def add_mailing_task(users_list):
+def notify_subscribers_about_course_update(course_id):
+    users_list = []
+    course = Course.objects.get(id=course_id)
+    subscriptions = Subscription.objects.filter(course=course)
+    if subscriptions.exists():
+        for user in subscriptions:
+            users_list.append(user.user.email)
     send_mail(
         subject='Курс обновлен',
         message='Зайдите на сайт чтобы посмотреть обновления в курсе',

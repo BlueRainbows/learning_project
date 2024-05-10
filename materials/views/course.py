@@ -4,8 +4,7 @@ from materials.models import Course
 from materials.pagination import PaginationCourse
 from materials.serializers.course import CourseSerializer
 from materials.services import create_product_course
-from materials.tasks import add_mailing_task
-from subscription.models import Subscription
+from materials.tasks import notify_subscribers_about_course_update
 from users.permissions import PermissionModer, PermissionUser
 
 
@@ -31,10 +30,5 @@ class CourseViewSet(ModelViewSet):
 
     def perform_update(self, serializer):
         course = serializer.save()
-        users_list = []
-        subscriptions = Subscription.objects.filter(course=course)
-        if subscriptions.exists():
-            for user in subscriptions:
-                users_list.append(user.user.email)
-        add_mailing_task.delay(users_list)
+        notify_subscribers_about_course_update.delay(course_id=course.id)
         course.save()
